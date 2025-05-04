@@ -32,7 +32,7 @@ async def addresses(messages: types.Message):
     await messages.answer("Нет адресов.")
 
 
-@user_router.message(F.text)
+# @user_router.message(F.text)
 # @user_router.message(F.photo)
 # @user_router.message(F.text.lower() == 'доставка')
 # @user_router.message(F.text.lower().contains('доставк'))
