@@ -6,22 +6,47 @@ catalog_router = Router()
 @catalog_router.message(F.text.lower() == 'мяч 1')
 async  def product_1(messages: types.Message):
     photo = FSInputFile(r'img\catalog\first.jpg')
-    await messages.answer_photo(photo, caption='Баскетбольный Мяч Wilson Fiba 3X3 WTB0533XB')
+    text = """Баскетбольный Мяч Wilson Fiba 3X3 WTB0533XB\n
+Мяч баскетбольный выполнен из микроволокнистой композитной кожи (полиуретан) обеспечивает износостойкость и возможность играть мячом на любом покрытии и в любую погоду. Благодаря применению технологии Precision Control Wave обеспечивается отличное сцепление за счет дополнительных канавок, мяч имеет 32 канавки, вместо стандартных 8.Увеличена эффективная поверхность мяча при стандартном размере. Такая технология использует канавки на поверхности мяча, чтобы максимально легко найти точки захвата. 
+    
+    
+Цена 1230 рублей"""
+    await messages.answer_photo(photo, caption=text)
 
 
 @catalog_router.message(F.text.lower() == 'мяч 2')
 async  def product_2(messages: types.Message):
     photo = FSInputFile(r'img\catalog\second.jpg')
-    await messages.answer_photo(photo, caption='Баскетбольный Мяч TORRES BM300 B02017')
+    text = """Баскетбольный Мяч TORRES BM300 B02017\n
+TORRES BM300 - тренировочный мяч серии School Line. Мяч предназначен для игры на специально оборудованных площадках в зале и на улице Покрышка из износостойкой резины. Бутиловая камера практически не пропускает воздух, что позволяет длительное время сохранять заданное давление в мяче без его подкачивания, армирование (обмотка) камеры нейлоновой нитью сохраняет форму мяча на протяжении всего срока эксплуатации. Глубокие каналы (технология DeepChannel) обеспечивают максимально уверенный захват. 
+
+
+Цена 1356 рублей"""
+
+    await messages.answer_photo(photo, caption=text)
 
 
 @catalog_router.message(F.text.lower() == 'мяч 3')
 async  def product_3(messages: types.Message):
     photo = FSInputFile(r'img\catalog\3.jpg')
-    await messages.answer_photo(photo, caption='Баскетбольный Мяч Jogel JB-500')
+    text = """Баскетбольный Мяч Jogel JB-500\n
+Баскетбольный мяч 5 JB-500 – рекомендован для любительской игры, тренировок команд среднего уровня, выглядит стильно. Состоит из 8 панелей более высококачественной синтетической кожи (полиуретан) с отличными показателями «цепкости», благодаря чему данным мячиком для уличного баскетбола можно играть практически на любой поверхности, как на улице, так и в зале. Использование технологии DeepChannel (глубокие каналы) позволило добиться сбалансированного сцепления с площадкой и руками игрока во время дриблинга или броска. Благодаря этому баксет лучше амортизирует и контролируется. No5 подходит для детей до 12 лет. 
+
+
+Цена: 1123"""
+    await messages.answer_photo(photo, caption=text)
 
 
 @catalog_router.message(F.text.lower() == 'мяч 4')
 async  def product_4(messages: types.Message):
     photo = FSInputFile(r'img\catalog\4.jpg')
-    await messages.answer_photo(photo, caption='Баскетбольный Мяч Wilson NBA Minnesota Timberwolves Team')
+    text = """Баскетбольный Мяч Wilson NBA Minnesota Timberwolves Team\n
+Представляем вам официальный баскетбольный мяч NBA Team Minnesota Timberwolves, созданный с особым вниманием к деталям и уважением к легендарной баскетбольной команде Alliance Minnesota Timberwolves. Этот мяч идеально подходит для игры на различных поверхностях и станет отличным выбором для любителей баскетбола.
+Особенности мяча:
+нейлоновый корд обеспечивает прочность и долговечность;
+износостойкая композитная резина PERFORMANCE COVER гарантирует отличное сцепление с рукой и поверхностью;
+размер 7 подходит для игроков разного уровня подготовки.
+    
+    
+Цена: 1540"""
+    await messages.answer_photo(photo, caption=text)

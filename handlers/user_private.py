@@ -1,12 +1,12 @@
 from aiogram import types, Router, F
 from aiogram.filters import CommandStart, Command
-from keyboards import reply
+from keyboards import reply, inline
 
 user_router = Router()
 
 @user_router.message(CommandStart())
 async def start(message: types.Message):
-    await message.answer('Привет это бот по баскетбольным мячам.', reply_markup=reply.main_kb)
+    await message.answer('Привет! 🏀 Добро пожаловать в наш чат-бот по продаже баскетбольных мячей! Здесь вы найдете широкий ассортимент мячей для игроков любого уровня — от начинающих до профессионалов. Если у вас есть вопросы о наших товарах, хотите получить рекомендации или узнать о специальных предложениях, просто напишите мне! Давайте вместе выберем идеальный мяч для ваших тренировок и игр. Готовы начать?', reply_markup=reply.main_kb)
 
 
 @user_router.message(F.text.lower() == 'каталог')
@@ -30,7 +30,18 @@ async def contacts(messages: types.Message):
 @user_router.message(F.text.lower() == 'адреса')
 @user_router.message(Command('addresses'))
 async def addresses(messages: types.Message):
-    await messages.answer("Нет адресов.")
+    await messages.answer("Наши адреса", reply_markup=inline.addresses_kb())
+
+@user_router.callback_query(F.data.lower().startswith('addresses'))
+async def addresses_info(callback: types.CallbackQuery):
+    query = callback.data.split('_')[1]
+    if query == '1':
+        await callback.message.answer('Ул.Пушкина дом 45\nНаходится между двумя красными домами.')
+    elif query == '2':
+        await callback.message.answer('Ул.Пушкина дом 31\nНаходится на перекрёстке возле ёлки.')
+    else:
+        await callback.message.answer('Ул.Пушкина дом 67\nУ дома зелёная крыша.')
+    await callback.answer('Адрес отправлен.')
 
 @user_router.message(F.text.lower() == 'назад')
 async def back_menu(messages: types.Message):
