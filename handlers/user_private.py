@@ -1,17 +1,18 @@
 from aiogram import types, Router, F
 from aiogram.filters import CommandStart, Command
+from keyboards import reply
 
 user_router = Router()
 
 @user_router.message(CommandStart())
 async def start(message: types.Message):
-    await message.answer('Привет это бот по баскетбольным мячам.')
+    await message.answer('Привет это бот по баскетбольным мячам.', reply_markup=reply.main_kb)
 
 
 @user_router.message(F.text.lower() == 'каталог')
 @user_router.message(Command('catalog'))
 async def catalog(messages: types.Message):
-    await messages.answer("Каталог ещё не готов.")
+    await messages.answer("Каталог", reply_markup=reply.catalog_kb)
 
 
 @user_router.message(F.text.lower() == 'про нас')
@@ -26,10 +27,14 @@ async def contacts(messages: types.Message):
     await messages.answer("Нет контактов.")
 
 
-@user_router.message(F.text.lower() == 'адрес')
+@user_router.message(F.text.lower() == 'адреса')
 @user_router.message(Command('addresses'))
 async def addresses(messages: types.Message):
     await messages.answer("Нет адресов.")
+
+@user_router.message(F.text.lower() == 'назад')
+async def back_menu(messages: types.Message):
+    await messages.answer('Главное меню', reply_markup=reply.main_kb)
 
 
 # @user_router.message(F.text)
